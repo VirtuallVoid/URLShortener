@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swagger UI</title>
+
+    <link rel="stylesheet" type="text/css" href="./swagger-ui.css" />
+
+    <link id="customStylesheet" rel="stylesheet" href="/swagger-ui/ToggleTheme.css">
+
+    <link id="darkThemeStylesheet" rel="stylesheet" href="" />
+
+    <style>
+
+        body {
+            background-color: #fff;
+            color: #000;
+        }
+
+        #toggleTheme {
+            background-color: #007bff;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+            #toggleTheme:hover {
+                background-color: #0056b3;
+            }
+    </style>
+</head>
+<body>
+    <div id="swagger-ui"></div>
+
+    <button id="toggleTheme">Switch to Dark Mode</button>
+
+    <script src="./swagger-ui-bundle.js" charset="UTF-8"></script>
+    <script src="./swagger-ui-standalone-preset.js" charset="UTF-8"></script>
+    <script>
+        window.onload = function () {
+            const ui = SwaggerUIBundle({
+                url: "/swagger/v1/swagger.json",
+                dom_id: '#swagger-ui',
+                presets: [
+                    SwaggerUIBundle.presets.apis,
+                    SwaggerUIStandalonePreset
+                ],
+                layout: "StandaloneLayout"
+            });
+
+            const toggleButton = document.getElementById('toggleTheme');
+            const darkThemeStylesheet = document.getElementById('darkThemeStylesheet');
+
+            let isDarkMode = false;
+
+            toggleButton.addEventListener('click', function () {
+                isDarkMode = !isDarkMode;
+
+                if (isDarkMode) {
+                    darkThemeStylesheet.href = "/swagger-ui/SwaggerDark.css";
+                    toggleButton.innerText = "Switch to Light Mode";
+                } else {
+                    darkThemeStylesheet.href = "";
+                    toggleButton.innerText = "Switch to Dark Mode";
+                }
+            });
+        };
+    </script>
+</body>
+</html>
