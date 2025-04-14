@@ -13,7 +13,6 @@ This repository is packed with:
 - ➡ Make a URL in short form of **five chars**
 - ➡ Supports about **one Billion URLs**
 - ➡ Use 'A' to 'Z', 'a' to 'z', and '0' to '9' to generate short forms
-- ➡ Sample: "http://localhost:5249/𝚛𝚗𝚟𝚜"
 - ➡ **Count Click** count of each short URL
 - ➡ **Redirect** short URL to the original one
 
